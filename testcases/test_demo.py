@@ -6,7 +6,7 @@
  @DateTime: 2023/4/4 14:19
  @SoftWare: PyCharm
 """
-import pytest,requests
+import pytest, requests
 import allure
 
 
@@ -15,11 +15,17 @@ class Test_Demo:
 
     @allure.story('story装饰器')
     def test_demo1(self):
-        assert 1,1
+        assert 1, 1
+        print('测试demo')
+
+    @allure.story('story装饰器')
+    def test_demo2(self):
+        assert 1, 1
+        print('测试demo')
 
 
 if __name__ == '__main__':
     # 执行pytest单元测试，生成 Allure 报告需要的数据存在 /temp 目录
-    pytest.main(['--alluredir', '../reports/2'])
+    pytest.main(['--alluredir', './reports/', '--clean'])
     # 执行命令 allure generate ./temp -o ./report --clean ，生成测试报告
-    os.system('allure generate ../reports/2 -o ./reports/2/reports_html --clean')
+    os.system('allure generate ./reports/ -o ./reports/reports_html --clean')
